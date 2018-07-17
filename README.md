@@ -1,4 +1,4 @@
-# [Hotels Reservations](https://amira-mohiey.github.io/hotels-reservation/) [![Build Status](https://travis-ci.org/Amira-Mohiey/hotels-reservation.svg?branch=master)](https://travis-ci.org/Amira-Mohiey/hotels-reservation)
+# [Hotels Reservations](https://amira-mohiey.github.io/hotels-reservation/) [![Build Status](https://travis-ci.org/Amira-Mohiey/hotels-reservation.svg?branch=master)](https://travis-ci.org/Amira-Mohiey/hotels-reservation) [![Maintainability](https://api.codeclimate.com/v1/badges/c21716b9be6496339d4b/maintainability)](https://codeclimate.com/github/Amira-Mohiey/hotels-reservation/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/c21716b9be6496339d4b/test_coverage)](https://codeclimate.com/github/Amira-Mohiey/hotels-reservation/test_coverage)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
