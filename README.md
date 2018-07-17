@@ -1,4 +1,5 @@
-# [Hotels Reservations](https://amira-mohiey.github.io/hotels-reservation/)
+# [Hotels Reservations](https://amira-mohiey.github.io/hotels-reservation/) [![Build Status](https://travis-ci.org/Amira-Mohiey/hotels-reservation.svg?branch=master)](https://travis-ci.org/Amira-Mohiey/hotels-reservation)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
