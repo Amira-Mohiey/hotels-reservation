@@ -6,3 +6,4 @@ export function getHotels() {
     return response.json();
   });
 }
+

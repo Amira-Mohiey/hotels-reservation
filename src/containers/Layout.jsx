@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getHotels } from "../api";
+import { getHotels } from "../services/api";
 import DatePick from "../components/DatePick";
 import HotelsList from "../components/HotelsList";
 import Sort from "../components/Sort";
@@ -132,9 +132,9 @@ export default class Layout extends Component {
   render() {
     return (
       <div className="container main">
-        {this.state.dateFlag && this.renderDatePicker()}
+        {this.state.dateFlag &&this.state.allHotels&& this.renderDatePicker()}
         {!this.state.dateFlag && (
-          <div className="row">
+          <div className="row cont">
             {this.renderSearch()}
             <div className="col-sm-9">
               {this.state.availableHotels && (

@@ -14,15 +14,15 @@ export function calculateNights(from, to) {
 }
 
 export function getAvailableHotels(from, to, hotels) {
-  var fromDate = new Date(from);
-  var toDate = new Date(to);
+  var fromDate = new Date(from).setHours(0,0,0,0);
+  var toDate = new Date(to).setHours(0,0,0,0);
   var availableHotels = [];
   hotels.map(hotel => {
     return hotel.availability.map(availability => {
       var fromArr = availability.from.split("-");
       var toParts = availability.to.split("-");
-      var hotelAvailableFrom = new Date(fromArr[2], fromArr[1] - 1, fromArr[0]);
-      var hotelAvailableTo = new Date(toParts[2], toParts[1] - 1, toParts[0]);
+      var hotelAvailableFrom = new Date(fromArr[2], fromArr[1] - 1, fromArr[0]).setHours(0,0,0,0);
+      var hotelAvailableTo = new Date(toParts[2], toParts[1] - 1, toParts[0]).setHours(0,0,0,0);
       if (hotelAvailableFrom <= fromDate && hotelAvailableTo >= toDate) {
         availableHotels.push(hotel);
       }
