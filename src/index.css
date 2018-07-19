@@ -89,3 +89,17 @@ label {
 .btn-link {
   color: #17a2b8;
 }
+.card-container{
+display: flex;
+flex-wrap: wrap;
+}
+.card{
+ flex-basis: 48%;
+ margin: 1%;
+}
+@media (max-width: 800px) {
+  .card{
+    flex-basis: 100%;
+  
+   }
+}

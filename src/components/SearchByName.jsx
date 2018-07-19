@@ -7,7 +7,7 @@ export default class SearchByName extends Component {
   setName = event => {
     event.target.value
       ? this.setState({ name: event.target.value })
-      : this.props.reset();
+      : this.props.reset("name");
   };
   render() {
     return (

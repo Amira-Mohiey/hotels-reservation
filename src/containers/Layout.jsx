@@ -7,12 +7,7 @@ import SearchByName from "../components/SearchByName";
 import SearchByPrice from "../components/SearchByPrice";
 import { calculateNights, getAvailableHotels } from "../utils/date";
 import { sortByName, sortByPrice } from "../utils/sort";
-import {
-  getMinPrice,
-  getMaxPrice,
-  searchByName,
-  searchByPrice
-} from "../utils/search";
+import { getMinPrice, getMaxPrice, search } from "../utils/search";
 export default class Layout extends Component {
   state = {
     allHotels: null,
@@ -20,7 +15,8 @@ export default class Layout extends Component {
     resetAvaialableHotels: null,
     nights: null,
     dateFlag: true,
-    error: null
+    error: null,
+    filters: { name: null, price: null }
   };
   componentDidMount() {
     getHotels().then(allHotels => {
@@ -51,8 +47,10 @@ export default class Layout extends Component {
     var availableHotels = sortByPrice(this.state.availableHotels);
     this.setState({ availableHotels });
   };
-  reset = () => {
-    this.setState({ availableHotels: this.state.resetAvaialableHotels });
+  reset = (filter) => {
+    const filters = this.state.filters;
+    filters[filter]= null;
+    this.setState({ filters},this.search());
   };
   displayHotels = (from, to) => {
     var result = calculateNights(from, to);
@@ -69,20 +67,17 @@ export default class Layout extends Component {
   getMaxPrice = () => {
     return getMaxPrice(this.state.availableHotels, this.state.nights);
   };
-  searchByName = text => {
-    var availableHotels = searchByName(text, this.state.availableHotels);
-
-    availableHotels
-      ? this.setState({ availableHotels })
-      : this.setState({ error: "Hotel Name Does Not match " });
+  searchByName = name => {
+    const filters = this.state.filters;
+    filters.name = name;
+    this.setState({ filters }, this.search());
   };
   searchByPrice = price => {
-    var availableHotels = searchByPrice(
-      price,
-      this.state.resetAvaialableHotels,
-      this.state.nights
-    );
-    this.setState({ availableHotels });
+    const filters = this.state.filters;
+    filters.price = price;
+    filters.nights = this.state.nights;
+
+    this.setState({ filters }, this.search());
   };
   changeDate = () => {
     this.setState({ dateFlag: true });
@@ -92,6 +87,15 @@ export default class Layout extends Component {
       <DatePick displayHotels={this.displayHotels} error={this.state.error} />
     );
   }
+  search = () => {
+
+    var availableHotels = search(
+      this.state.filters,
+      this.state.resetAvaialableHotels
+    );
+    
+    this.setState({availableHotels});
+  };
   renderSearch() {
     return (
       <div className="col-sm-3">
@@ -132,7 +136,7 @@ export default class Layout extends Component {
   render() {
     return (
       <div className="container main">
-        {this.state.dateFlag &&this.state.allHotels&& this.renderDatePicker()}
+        {this.state.dateFlag && this.state.allHotels && this.renderDatePicker()}
         {!this.state.dateFlag && (
           <div className="row cont">
             {this.renderSearch()}
@@ -143,6 +147,12 @@ export default class Layout extends Component {
                   {this.renderHotels()}
                 </div>
               )}
+              <div>
+                {" "}
+                {!this.state.availableHotels.hotels.length && (
+                  <p>No Match Found</p>
+                )}
+              </div>
             </div>
           </div>
         )}

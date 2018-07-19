@@ -24,9 +24,12 @@ export function getAvailableHotels(from, to, hotels) {
       var hotelAvailableFrom = new Date(fromArr[2], fromArr[1] - 1, fromArr[0]).setHours(0,0,0,0);
       var hotelAvailableTo = new Date(toParts[2], toParts[1] - 1, toParts[0]).setHours(0,0,0,0);
       if (hotelAvailableFrom <= fromDate && hotelAvailableTo >= toDate) {
-        availableHotels.push(hotel);
-      }
+        console.log(hotel.name)
+        if(availableHotels.indexOf(hotel)===-1)
+       { availableHotels.push(hotel)}}
+      
      return availableHotels });
   });
+  console.log(availableHotels)
   return { hotels: availableHotels };
 }
