@@ -90,6 +90,7 @@ export default class Layout extends Component {
     );
   }
   checkSort=()=>{
+    // Check most recent sort to apply after search
     if (this.state.sort === "name") {
       this.sortName()
     } else if (this.state.sort === "price") {

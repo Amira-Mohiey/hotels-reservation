@@ -35,12 +35,10 @@ export function searchByPrice(maxPrice, availableHotels, nights) {
 export function search(filters, allHotels) {
   var hotels = {};
   if (filters.name && filters.price) {
-    hotels = searchByName(filters.name, allHotels).hotels.filter(
-      value =>
-        -1 !==
-        searchByPrice(filters.price, allHotels, filters.nights).hotels.indexOf(
-          value
-        )
+    var nameHotelsArr=searchByName(filters.name, allHotels).hotels
+    var priceHotelsArr= searchByPrice(filters.price, allHotels, filters.nights).hotels
+    hotels = nameHotelsArr.filter(value =>
+         -1 !==priceHotelsArr.indexOf(value)
     );
     return { hotels };
   } else {
