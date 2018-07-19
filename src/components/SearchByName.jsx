@@ -16,7 +16,7 @@ export default class SearchByName extends Component {
           className="form-control search_input"
           type="search"
           placeholder="Hotel Name"
-          id="example-search-input"
+          id="search-input"
           onChange={this.setName}
         />
         <span className="input-group-append">

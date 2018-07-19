@@ -20,7 +20,7 @@ export default class DatePick extends Component {
         <input
           type="date"
           className=" form-control "
-          name={name}
+          id={name}
           format="dd/MM/yyyy"
           onChange={this.setDate}
           min={today}

@@ -11,7 +11,7 @@ describe("hotel list component", () => {
   beforeAll(() => {
     wrapper = shallow(<HotelList hotels={data} nights="2" />);
   });
-  it("card render with data", () => {
+  test("card render with data", () => {
     const HOTEl_LIST = wrapper.find(".card-title");
     expect(HOTEl_LIST).toHaveLength(6);
     HOTEl_LIST.forEach((card, i) => {
