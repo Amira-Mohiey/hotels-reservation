@@ -2,12 +2,15 @@ import React, { Component } from "react";
 
 export default class SearchByName extends Component {
   state = {
-    name:""
+    name: ""
   };
   setName = event => {
     event.target.value
       ? this.setState({ name: event.target.value })
       : this.props.reset("name");
+  };
+  search = () => {
+    this.props.search(this.state.name);
   };
   render() {
     return (
@@ -23,7 +26,7 @@ export default class SearchByName extends Component {
           <button
             className="btn btn-outline-secondary search_button"
             type="button"
-            onClick={() => this.props.search(this.state.name)}
+            onClick={this.search}
           >
             <i className="fa fa-search" />
           </button>

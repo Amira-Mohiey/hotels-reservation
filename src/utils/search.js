@@ -46,6 +46,7 @@ export function search(filters, allHotels) {
       hotels = searchByName(filters.name, allHotels);
     }
     if (filters.price) {
+  
       hotels = searchByPrice(filters.price, allHotels, filters.nights);
     }
   }

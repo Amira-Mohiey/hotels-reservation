@@ -11,9 +11,7 @@ describe(" test search by name component", () => {
 
   beforeAll(() => {
     mockFn = jest.fn();
-    wrapper = shallow(
-      <SearchByName SearchByName={mockFn} reset={mockFn} />
-    );
+    wrapper = shallow(<SearchByName search={mockFn} reset={mockFn} />);
   });
 
   test("should render properly", () => {
@@ -21,6 +19,12 @@ describe(" test search by name component", () => {
     const searchButton = wrapper.find(".search_button");
     expect(searchInput).toHaveLength(1);
     expect(searchButton).toHaveLength(1);
-
+  });
+  test("test setstate Name", () => {
+    wrapper.instance().setName({ target: { value: "Concorde" } });
+    expect(wrapper.state("name")).toEqual("Concorde");
+  });
+  test("search button ", () => {
+    wrapper.find(".search_button").simulate("click");
   });
 });
