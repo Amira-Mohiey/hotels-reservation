@@ -15,7 +15,7 @@ describe("hotel list component", () => {
     const HOTEl_LIST = wrapper.find(".card-title");
     expect(HOTEl_LIST).toHaveLength(6);
     HOTEl_LIST.forEach((card, i) => {
-      expect(card.props().children).toEqual(data.hotels[i].name);
+      expect(card.props().children[0]).toEqual(data.hotels[i].name);
     });
   });
 });
