@@ -10,12 +10,11 @@ import data from "./__mocks__/hotels.json";
 test("test minimum price in hotels in 2 nights function", () => {
   expect(getMinPrice(data, 1)).toBe(79.4);
   expect(getMinPrice(data, 2)).toBe(158.8); // 79.4 * 2
-  expect(getMinPrice(data, 10)).toBe(794); // 79.4 * 10
+
 });
 test("test max price in hotels funtion", () => {
-  expect(getMaxPrice(data, 1)).toBe(111);
   expect(getMaxPrice(data, 2)).toBe(222); // 111 * 2
-  expect(getMaxPrice(data, 3)).toBe(333); // 111 * 3
+
 });
 test("test search by name function", () => {
   expect(searchByName("golden", data).hotels[0].name.toLowerCase()).toContain(

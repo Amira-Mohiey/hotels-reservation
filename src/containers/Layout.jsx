@@ -16,7 +16,8 @@ export default class Layout extends Component {
     nights: null,
     dateFlag: true,
     error: null,
-    filters: { name: null, price: null }
+    filters: { name: null, price: null },
+    sort: null
   };
   componentDidMount() {
     getHotels().then(allHotels => {
@@ -41,16 +42,17 @@ export default class Layout extends Component {
   };
   sortName = () => {
     var availableHotels = sortByName(this.state.availableHotels);
-    this.setState({ availableHotels });
+    this.setState({ availableHotels, sort: "name" });
   };
   sortPrice = () => {
     var availableHotels = sortByPrice(this.state.availableHotels);
-    this.setState({ availableHotels });
+    this.setState({ availableHotels, sort: "price" });
   };
-  reset = (filter) => {
+  reset = filter => {
     const filters = this.state.filters;
-    filters[filter]= null;
-    this.setState({ filters},this.search());
+    filters[filter] = null;
+
+    this.setState({ filters }, this.search());
   };
   displayHotels = (from, to) => {
     var result = calculateNights(from, to);
@@ -87,14 +89,19 @@ export default class Layout extends Component {
       <DatePick displayHotels={this.displayHotels} error={this.state.error} />
     );
   }
+  checkSort=()=>{
+    if (this.state.sort === "name") {
+      this.sortName()
+    } else if (this.state.sort === "price") {
+      this.sortPrice();
+    }
+  }
   search = () => {
-
     var availableHotels = search(
       this.state.filters,
       this.state.resetAvaialableHotels
     );
-    
-    this.setState({availableHotels});
+    this.setState({ availableHotels },this.checkSort())
   };
   renderSearch() {
     return (
